@@ -1,0 +1,34 @@
+---
+title: "Liga"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## La Liga
+
+Los equipos de la Liga serían los siguientes:
+
+```{python equipos, echo = FALSE, python.reticulate=FALSE}
+import urllib.request
+from bs4 import BeautifulSoup
+import pandas
+import csv
+url = 'https://www.laliga.com/'
+html = urllib.request.urlopen(url)
+soup = BeautifulSoup(html)
+tags = soup.find_all("a",class_="link")
+equipos=('Athletic','Atético Madrid','Osasuna','Leganés','Alavés','Barça','Getafe','Granada','Levante','Valladolid','Celta','Espanyol','Mallorca','Betis','Madrid','Real Sociedad','Eibar','Sevilla','Valencia','Villarreal')
+webs_equipos={}
+indice=0
+for tag in tags:
+    if tag.get('rel')!=None:
+        web=tag.get('href')
+        webs_equipos[equipos[indice]]=web
+        indice+=1
+for equipo,web in webs_equipos.items():
+    print(equipo,":",web)
+```
+
