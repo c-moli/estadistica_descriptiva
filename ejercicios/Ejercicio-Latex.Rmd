@@ -1,0 +1,75 @@
+---
+title: "Ejercicio LaTeX, R y MarkDown"
+author: "Carlos M"
+date: "9/6/2020"
+output:
+  pdf_document: default
+  word_document: default
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Instrucciones
+En primer lugar, debéis reproducir este documento tal cual está. Necesitaréis instalar MiKTeX y Texmaker.
+
+A continuación de cada pregunta, tenéis que redactar vuestras respuestas de manera correcta y argumentada,
+indicando qué hacéis, por qué, etc. Si se os pide utilizar instrucciones de R, tendréis que mostrarlas todas en
+chunks.
+
+El objetivo de esta tarea es que os familiaricéis con los documentos Markdown, las fórmulas en \LaTeX\ y los
+chunks de R. Y, de lo más importante, que os acostumbréis a explicar lo que hacéis en cada momento.
+
+# Preguntas
+
+## Pregunta 1
+
+Realizad los siguientes productos de matrices siguiente en R:
+
+$$A\ \cdotp B$$
+$$ B\ \cdotp A$$
+$$ (A\ \cdotp B)^t$$
+$$ B^t \cdotp A $$
+$$(A\ \cdotp B)^{-1} $$
+$$ A^{-1} \cdotp B^t $$
+
+Donde 
+$$A = \begin{pmatrix} 1\ 2\ 3\ 4 \\ 4\ 3\ 2 \ 1 \\ 0\ 1\ 0\ 2\\ 3\ 0\ 4\ 0 \end{pmatrix}\qquad B = \begin{pmatrix} 4\ 3\ 2\ 1 \\ 0\ 3\ 0 \ 4 \\ 1\ 2\ 3\ 4\\ 0\ 1\ 0\ 2 \end{pmatrix}$$
+
+
+Finalmente, escribe haciendo uso de \LaTeX\ el resultado de los dos primeros produtos de forma adecuada.
+
+El producto de las dos matrices da:
+
+```{r,echo=F, eval=T}
+A = c(1,2,3,4,4,3,2,1,0,1,0,2,3,0,4,0)
+B = c(4,3,2,1,0,3,0,4,1,2,3,4,0,1,0,2)
+matriz_A = matrix(A, nrow = 4, byrow = T)
+matriz_B = matrix(B, nrow = 4, byrow = T)
+matriz_A*matriz_B
+```
+
+
+## Pregunta 2
+
+Considerad en un vector los números de vuestro DNI y llamadlo dni. Por ejemplo, si vuestro DNI es
+52741825H, vuestro vector será
+$$ dni = (5,2,7,4,1,8,2,5)$$
+
+Definid el vector en R. Calculad con R el vector dni al cuadrado, la raíz cuadrada del vector dni y, por último,
+la suma de todas las cifras del vector dni.
+
+Finalmente, escribid todos estos vectores también a \LaTeX\
+
+## Pregunta 3
+
+Considerad el vector de las letras de vuestro nombre y apellido. Llamadlo name. Por ejemplo, en mi caso sería
+$$nombre = (C,A,R,L,O,S)$$
+
+
+Definid dicho vector en R. Calculad el subvector que solo contenga vuestro nombre. Calculad también el subvector que contenga solo vuestro apellido. Ordenadlo alfabéticamente. Cread una matriz con este vector.
+
+Redactad todos vuestros resultados y utilizad \LaTeX\ cuando toque

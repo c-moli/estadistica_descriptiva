@@ -1,0 +1,64 @@
+Cread un vector llamado "Harry" formado por la sucesión de números consecutivos entre el -10 y 27. Pedidle a R que os devuelva el elemento de índice 7. Escribid el resultado.
+
+Harry=-10:27
+
+Harry[7]
+
+-4
+
+Dad el máximo de la sucesión (100*2^n -7*3^n) con n=0,...,200
+
+n=0:200
+
+max(100*2^n-7*3^n)
+
+1499
+
+Cread la sucesión de números consecutivos entre 0 y 40. A continuación, cread el vector (3*5^n - 1) con n=0,...,40. Ponedle como nombre x. Ahora, dad el subvector de los elementos que son estrictamente mayores que 3.5
+
+n=0:40
+
+x=3*5^n-1
+
+which(x>3.5)
+
+Cread una función que os devuelva la parte real, la imaginaria, el módulo, el argumento y el conjugado de un número, mostrando solo 2 cifras significativas
+
+RECOMENDACIÓN: En algún momento os hará falta utilizar vectores
+
+info = function(x){print(c(Re(x),Im(x),Mod(x),Arg(x),Conj(x)),2)}
+
+Cread una función que resuelva ecuaciones de segundo grado (de la forma Ax^2+Bx+C=0). No importa, por ahora, que tengáis en cuenta las que no tienen solución
+
+RECOMENDACIÓN: En algún momento os hará falta utilizar vectores
+
+solu2 = function(A,B,C){c((-B+sqrt(B^2-4*A*C)/(2*A)),(-B-sqrt(B^2-4*A*C)/(2*A)))}
+
+Tomando el vector vec = c(0,9,98,2,6,7,5,19,88,20,16,0), dad 3 opciones diferentes para calcular el subvector c(9,19,20,16)
+
+Tomando el vector vec definido en el apartado anterior, buscad
+
+    - qué entradas son pares
+
+    - qué entradas no son pares y mayores que 20
+
+    - dónde toma vec su valor máximo
+
+    - dónde toma vec sus valores mínimos
+
+Las 3 opciones son:
+
+vec[c(2,8,10,11)]
+
+vec[vec == 9 | vec == 19 | vec == 20 | vec == 16]
+
+vec[vec >= 9 & vec <= 20]
+
+Pares: which(vec%%2==0)
+
+No pares y mayores que 20: which(vec%%2!=0 & vec>20)
+
+Máximo: which.max(vec)
+
+Mínimos: which(vec==min(vec))
+

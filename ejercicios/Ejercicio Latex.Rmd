@@ -1,0 +1,42 @@
+---
+title: "Ejercicio LaTeX, R y MarkDown"
+author: "Carlos M"
+date: "9/6/2020"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Instrucciones
+En primer lugar, debéis reproducir este documento tal cual está. Necesitaréis instalar MiKTeX y Texmaker.
+
+A continuación de cada pregunta, tenéis que redactar vuestras respuestas de manera correcta y argumentada,
+indicando qué hacéis, por qué, etc. Si se os pide utilizar instrucciones de R, tendréis que mostrarlas todas en
+chunks.
+
+El objetivo de esta tarea es que os familiaricéis con los documentos Markdown, las fórmulas en LATEX y los
+chunks de R. Y, de lo más importante, que os acostumbréis a explicar lo que hacéis en cada momento.
+
+# Preguntas
+
+## Pregunta 1
+
+Realizad los siguientes productos de matrices siguiente en R:
+
+$$A\ \cdotp B$$
+$$ B\ \cdotp A$$
+$$ (A\ \cdotp B)^t$$
+$$ B^t \cdotp A $$
+$$(A\ \cdotp B)^{-1} $$
+$$ A^{-1} \cdotp B^t $$
+
+Donde $ A = \begin{pmatrix} 1\ 2\ 3\ 4 \\ 4\ 3\ 2 \ 1 \\ 0\ 1\ 0\ 2\\ 3\ 0\ 4\ 0 \end{pmatrix} $ 
+
+$ B = \begin{pmatrix} 4\ 3\ 2\ 1 \\ 0\ 3\ 0 \ 4 \\ 1\ 2\ 3\ 4\\ 0\ 1\ 0\ 2 \end{pmatrix} $
+
+Finalmente, escribe haciendo uso de $\LaTeX$ el resultado de los dos primeros produtos de forma adecuada.
