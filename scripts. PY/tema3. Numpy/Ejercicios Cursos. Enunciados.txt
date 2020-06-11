@@ -1,0 +1,26 @@
+Preguntas de esta tarea
+Crea una función que reciba los tres coeficientes a, b y c para resolver una ecuación de segundo grado. Muestra la solución por pantalla y ayúdate de la librería Math para acceder a la función raíz cuadrada.
+
+Crea una función que lea una frase de teclado y nos diga si es o no un palíndromo (frase que se lee igual de izquierda a derecha o al revés como por ejemplo La ruta nos aportó otro paso natural.)
+
+Crea un diccionario que tenga por claves los números del 1 al 10 y como valores sus raíces cuadradas
+
+Crea un diccionario que tenga como claves las letras del alfabeto castellano y como valores los símbolos del código morse (los tienes todos en la Wikipedia). A continuación crea un programa que lea una frase del teclado y te la convierta a Morse utilizando el diccionario anterior.
+
+Crea una función que dados dos diccionarios nos diga que claves están presentes en ambos.
+
+Crea una función que dado un número N nos diga si es primo o no (tiene que ir dividiendo por todos los números x comprendidos entre 2 y el propio número N menos uno y ver si el cociente de N/x tiene resto entero o no).
+
+Investiga la documentación de la clase string y crea un método que lea una frase del teclado y escriba la primera letra de cada palabra en Mayúscula.
+
+Crea una función que calcule el máximo común divisor de dos números introducidos por el usuario por teclado.
+
+Investiga el Cifrado del César y crea una función que lo reproduzca en Python. Cada letra del mensaje original se desplaza tres posiciones en el alfabeto estándar. La A se convierte en la D, la B se convierte en la E, la C se convierte en la F... y cuando se acaba el alfabeto se le vuelve a dar la vuelta: la X se convierte en la A, la Y en la B y la X en la C. Los números no sufren ninguna modificación.
+
+Dado una lista de nombres de persona, escribe un algoritmo que los ordene de tres formas diferentes:
+
+A. De forma alfabética
+
+B. De forma alfabética invertida
+
+C. De nombre más corto al más largo.
