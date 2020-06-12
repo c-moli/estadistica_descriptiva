@@ -82,12 +82,21 @@ for palabra in palabras:
 
 #Ejercicio 8
 
-def mcd(a, b):
-	if b == 0: 
-        return a
-	return mcd(b, a%b)
+def MCD(a,b):
+	if b ==0:
+		return a
+	else:
+		if a>b:
+			a=a-b
+			b=b
+			return MCD(a,b)
+		else:
+			c=b-a
+			a=b
+			b=c
+			return MCD(a,b)
 
-print(mcd(105,70))
+print(MCD(33,22))
 
 #Ejercicio 10
 
