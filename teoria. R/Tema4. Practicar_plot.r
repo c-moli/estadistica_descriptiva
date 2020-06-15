@@ -28,3 +28,36 @@ plot(x,y, pch = 23, cex = 2, col = "deeppink", type = "o")
 plot(x,y, pch = 23, cex = 2, col = "springgreen", type = "h")
 plot(x,y, pch = 23, cex = 2, col = "firebrick1", type = "s")
 par(mfrow = c(1,1))
+curve(x^2-3*x+30, 
+      from = -15, 
+      to =  15, 
+      main = "Una parábola",
+      xlab = expression(x),
+      ylab = expression(x^2-3*x+30))
+
+funcion = function(x){
+  x^2-3*x+30
+}
+i = c(-15:15)
+plot(i,funcion(i))
+
+curve(5*2^x, -10, 25,
+      ylab = expression(y = 5*2^x))
+
+curve(3*x, -10, 20, 
+      col = "blue",
+      main = "Dos rectas con pendiente opuesta")
+curve(-3*x, -10, 20, 
+      col = "green",
+      add = TRUE)
+legend(13,10, col = c("blue", "green"), 
+       legend = c(expression(3*x), expression(-3*x)),
+       bg = "grey",
+       lwd = 2,
+       xjust = 0.3)
+abline(h=0,col = "red", lwd = 5)
+
+curve(2*x+7, col = "dodgerblue4", lwd = 2, add = TRUE)
+
+help("abline")
+
