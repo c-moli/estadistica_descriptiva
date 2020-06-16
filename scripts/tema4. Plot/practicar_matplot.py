@@ -18,4 +18,3 @@ plt.plot([1,3,5,7])
 plt.subplot(2,1,2) #sin esta instrucción se harían las dos rectas en la misma gráfica
 plt.plot([7,5,3,1],"g.-")
 plt.show()
-
