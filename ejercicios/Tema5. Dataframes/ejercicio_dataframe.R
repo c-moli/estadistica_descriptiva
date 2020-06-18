@@ -15,6 +15,8 @@ print(paste("Hay",medallas[2,2], "medallas de oro,",medallas[3,2],
 lugares = as.factor(select(df,starts_with("City")))
 class(lugares)
 levels(lugares)
+lista_ciudades = unique(df$City)
+length(lista_ciudades)
 
 #Pregunta 4
 genero = aggregate(Event.gender~df$Event.gender, df, FUN = length)
