@@ -2,6 +2,7 @@
 title: "Tema 5 - Data frames"
 author: "Juan Gabriel Gomila & María Santos"
 output:
+  beamer_presentation: default
   ioslides_presentation:
     css: JB_style.css
     logo: Imgs/LogoCurso.png
@@ -107,10 +108,10 @@ Aquí tenéis una [lista de data frames](http://www.public.iastate.edu/~maitra/s
 ## Parámetros de read.table()
 
 ```{r}
-students = read.table("http://www.public.iastate.edu/~maitra/stat501/datasets/morel.dat", 
-  col.names = c("technicalDisciplines","aptitude","maths", "language",
-                "generalKnowledge"))
-head(students,8)
+pokemon = read.table("C:\\Users\\cmolinero\\Documents\\GitHub\\r-basic\\data\\Pokemon.csv",header = TRUE,sep = ",",
+  col.names = c("Nombre","Tipo 1","Tipo2", "Total",
+                "Puntos_Salud","Ataque","Defensa","Ataque_Especial","Defensa_Especial","Velocidad","Generación","Legendario"))
+head(pokemon,8)
 ```
 
 
@@ -139,9 +140,9 @@ no podemos entrar directamente la dirección en `read.table()`; una solución es
 ## Exportando datos a ficheros
 
 ```{r}
-write.table(students, file = "../data/StudentsData", dec = ".")
-students2 = read.table("../data/StudentsData", header = TRUE)
-str(students2)
+write.table(pokemon, file = "../data/Pokemon2.csv", dec = ".")
+pokemon2 = read.table("../data/Pokemon2.csv", header = TRUE)
+str(pokemon2)
 ```
 
 ## Construyendo data frames
