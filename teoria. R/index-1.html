@@ -1,0 +1,554 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>"Tema 8 - Estadística descriptiva con datos cuantitativos" </title></head><body>
+<h1 id="descripcion-de-datos-cuantitativos">Descripción de datos cuantitativos</h1>
+<h2 id="datos-cuantitativos">Datos cuantitativos</h2>
+<p>Los <l class="definition">datos cuantitativos</l> son los que expresan cantidades que se representan mediante números. Éstos se suelen clasificar en continuos y discretos.</p>
+<ul>
+<li>
+<p>Los <l class="definition">datos continuos</l> son los que, si existiese la posibilidad de medirlos con precisión infinita, en principio podrían tomar todos los valores de un intervalo de la recta real. A modo de ejemplo, el peso, la altura, el tiempo... son datos de este tipo.</p>
+</li>
+<li>
+<p>Por su parte, los <l class="definition">datos discretos</l> son los que pueden tomar un solo conjunto contable de valores. El número de colores de un gato, el número de individuos que conforman una población son algunos ejemplos de este tipo de datos.</p>
+</li>
+</ul>
+<p>Conviene tener en cuenta que esta división es solo teórica. Es decir, en la práctica, todos estos datos son discretos puesto que la precisión infinita no existe. Sin embargo, es necesario de vez en cuando suponer los datos de tipo continuo para así poder utilizar técnicas específicas en su análisis.</p>
+<h2 id="datos-cuantitativos_1">Datos cuantitativos</h2>
+<p>A la hora de estudiar <l class="definition">variables cuantitativas</l>, podemos utilizar las frecuencias que hemos visto hasta el momento: absoluta, relativa, acumulada y relativa acumulada. Esto se debe a que podemos ordenar los datos cuantitativos en el orden natural de los números reales.</p>
+<p>En este caso, disponemos de muchas otras técnicas descriptivas aparte de las frecuencias, puesto que estamos trabajando con números reales y podemos operar con ellos. </p>
+<p>Los datos cuantitativos admiten dos tipos de tratamiento según trabajemos con los <l class="definition">raw data</l> (datos brutos u originales) o bien los agrupemos en clases o intervalos. </p>
+<p>En esta lección trabajaremos sobre la primera situación. En la siguiente, estudiaremos la descripción de datos cuantitativos agrupados. </p>
+<h1 id="frecuencias">Frecuencias</h1>
+<h2 id="frecuencias-de-datos-cuantitativos">Frecuencias de datos cuantitativos</h2>
+<p>El tratamiento de las frecuencias de datos cuantitativos es similar al de los datos ordinales. La cosa cambia ligeramente debido a que no se tienen en cuenta todos los niveles posibles, sino únicamente los observados.</p>
+<h2 id="ejemplo-1">Ejemplo 1</h2>
+<div class="example">
+
+**Ejemplo 1**
+
+Se han pedido las edades a 20 clientes de un museo. Las respuestas obtenidas han sido las siguientes:
+
+</div>
+
+<p><code>r
+edad = c(15,18,25,40,30,29,56,40,13,27,42,23,11,26,25,32,30,40,33,29)</code></p>
+<div class="example">
+
+Recordemos que solamente nos interesan las frecuencias de las edades observadas. Es decir, solamente nos interesan 
+
+</div>
+
+<p><code>r
+table(edad)</code></p>
+<p><code>edad
+11 13 15 18 23 25 26 27 29 30 32 33 40 42 56 
+ 1  1  1  1  1  2  1  1  2  2  1  1  3  1  1</code></p>
+<h2 id="ejemplo-1_1">Ejemplo 1</h2>
+<div class="example">
+Calculemos el resto de frecuencias como ya sabemos
+</div>
+
+<p><code>r
+round(prop.table(table(edad)),3)</code></p>
+<p><code>edad
+  11   13   15   18   23   25   26   27   29   30   32   33   40   42   56 
+0.05 0.05 0.05 0.05 0.05 0.10 0.05 0.05 0.10 0.10 0.05 0.05 0.15 0.05 0.05</code></p>
+<p><code>r
+cumsum(table(edad))</code></p>
+<p><code>11 13 15 18 23 25 26 27 29 30 32 33 40 42 56 
+ 1  2  3  4  5  7  8  9 11 13 14 15 18 19 20</code></p>
+<h2 id="ejemplo-1_2">Ejemplo 1</h2>
+<p><code>r
+round(cumsum(prop.table(table(edad))),3)</code></p>
+<p><code>11   13   15   18   23   25   26   27   29   30   32   33   40   42   56 
+0.05 0.10 0.15 0.20 0.25 0.35 0.40 0.45 0.55 0.65 0.70 0.75 0.90 0.95 1.00</code></p>
+<h2 id="frecuencias-de-datos-cuantitativos_1">Frecuencias de datos cuantitativos</h2>
+<p>En general, supongamos que tenemos $n$ observaciones de una propiedad que se mide con un número real y obtenemos la variable cuantitativa formada por los datos 
+$$x_1,\dots, x_n$$</p>
+<p>Sean ahora $X_1,\dots,X_k$ los valores distintos que aparecen en esta lista de datos y considerémoslos ordenados
+$$X_1&lt;X_2&lt;\cdots&lt;X_k$$</p>
+<h2 id="frecuencias-de-datos-cuantitativos_2">Frecuencias de datos cuantitativos</h2>
+<p>Entonces, en esta variable cuantitativa</p>
+<ul>
+<li>La frecuencia absoluta de $X_i$ es el número $n_i$ de elementos que son iguales a $X_i$</li>
+<li>La frecuencia relativa de $X_i$ es $f_i=\frac{n_i}{n}$</li>
+<li>La frecuencia absoluta acumulada de $X_i$ es $N_i=\sum_{j=1}^in_j$</li>
+<li>La frecuencia relativa acumulada de $X_i$ es $F_i=\frac{N_i}{n}$</li>
+</ul>
+<h2 id="ejemplo-2">Ejemplo 2</h2>
+<div class="example">
+**Ejemplo 2**
+
+Lanzamos 25 veces un dado de 6 caras y anotamos las puntuaciones obtenidas en cada tirada.
+
+En este caso, $n=25$ y, los distintos valores observados son 
+
+$$X_1 = 1,\ X_2 = 2,\ X_3 = 3,\ X_4 = 4,\ X_5 = 5,\ X_6 = 6$$
+
+Nos interesa ahora calcular las frecuencias de este experimento. Además, las organizaremos en un data frame para observarlas de forma más clara y sencilla en una tabla.
+</div>
+
+<p><code>r
+set.seed(162017)
+dados = sample(1:6,25,replace = TRUE)
+dados</code></p>
+<p><code>[1] 1 1 5 5 5 5 1 6 5 4 1 3 1 3 2 2 1 1 1 4 2 1 6 3 1</code></p>
+<p><code>r
+set.seed(NULL)</code></p>
+<h2 id="ejemplo-2_1">Ejemplo 2</h2>
+<p><code>r
+table(dados)</code></p>
+<p><code>dados
+ 1  2  3  4  5  6 
+10  3  3  2  5  2</code></p>
+<p><code>r
+round(prop.table(table(dados)),2)</code></p>
+<p><code>dados
+   1    2    3    4    5    6 
+0.40 0.12 0.12 0.08 0.20 0.08</code></p>
+<p><code>r
+cumsum(table(dados))</code></p>
+<p><code>1  2  3  4  5  6 
+10 13 16 18 23 25</code></p>
+<h2 id="ejemplo-2_2">Ejemplo 2</h2>
+<p><code>r
+round(cumsum(prop.table(table(dados))),2)</code></p>
+<p><code>1    2    3    4    5    6 
+0.40 0.52 0.64 0.72 0.92 1.00</code></p>
+<p><code>r
+dados.df = data.frame(Puntuacion = 1:6,
+                      Fr.abs = as.vector(table(dados)),
+                      Fr.rel = as.vector(round(prop.table(table(dados)),2)),
+                      Fr.acu = as.vector(cumsum(table(dados))),
+                      Fr.racu = as.vector(round(cumsum(prop.table(table(dados))),2)))</code></p>
+<h2 id="ejemplo-2_3">Ejemplo 2</h2>
+<p><code>r
+dados.df</code></p>
+<p><code>Puntuacion Fr.abs Fr.rel Fr.acu Fr.racu
+1          1     10   0.40     10    0.40
+2          2      3   0.12     13    0.52
+3          3      3   0.12     16    0.64
+4          4      2   0.08     18    0.72
+5          5      5   0.20     23    0.92
+6          6      2   0.08     25    1.00</code></p>
+<p><l class="important">¡OJO!</l> Para entrar una tabla unidimensional como una variable en un data frame, es conveniente transformarla en vector con <code>as.vector</code>. Si no, cada <code>table</code> y cada <code>prop.table</code> añadirían una columna extra con los nombres de los niveles.</p>
+<h1 id="medidas-de-tendencia-central">Medidas de tendencia central</h1>
+<h2 id="medidas-de-tendencia-central_1">Medidas de tendencia central</h2>
+<p>Las <l class="definition">medidas de tendencia central</l> son las que dan un valor representativo a todas las observaciones. Algunas de las más importantes son:</p>
+<ul>
+<li>La <l class="definition">media aritmética</l> o <l class="definition">valor medio</l>
+$$\bar{x} = \frac{\sum_{i=1}^nx_i}{n}=\frac{\sum_{j=1}^kn_jX_j}{n}=\sum_{j=1}^kf_jX_j$$</li>
+<li>La <l class="definition">mediana</l>, que representa el valor central en la lista ordenada de observaciones.</li>
+<li>La <l class="definition">moda</l> es el valor (o valores) de máxima frecuencia (absoluta o relativa, el resultado será el mismo).</li>
+</ul>
+<h2 id="la-mediana">La mediana</h2>
+<p>La definición formal de la mediana es la siguiente. Denotando por $$x_{(1)}\le x_{(2)}\le\dots\le x_{(n)}$$ los datos de la variable cuantitativa ordenados de menor a mayor, la mediana es</p>
+<ul>
+<li>Si $n$ par, la medio de los dos datos centrales $$\frac{x_{(\frac{n}{2})}+x_{(\frac{n}{2}+1)}}{2}$$</li>
+<li>Si $n$ impar, el dato central $x_{(\frac{n+1}{2})}$</li>
+</ul>
+<h2 id="ejemplo-1_3">Ejemplo 1</h2>
+<div class="example">
+Recordemos el ejemplo de las edades.
+</div>
+
+<p><code>r
+sort(edad) #Ordenamos los datos por su orden natural</code></p>
+<p><code>[1] 11 13 15 18 23 25 25 26 27 29 29 30 30 32 33 40 40 40 42 56</code></p>
+<p><code>r
+table(edad)</code></p>
+<p><code>edad
+11 13 15 18 23 25 26 27 29 30 32 33 40 42 56 
+ 1  1  1  1  1  2  1  1  2  2  1  1  3  1  1</code></p>
+<div class="example">
+En este caso, la moda es 40, la mediana es $\frac{29+29}{2}=29$ y la media aritmética es
+
+<div class="aligncenter">
+$\frac{11+13+15+18+23+25+25+26+27+29+29+30+30+32+33+40+40+40+42+56}{20}=29.2$
+</div>
+</div>
+
+<h2 id="ejemplo-2_4">Ejemplo 2</h2>
+<div class="example">
+Recordemos el ejemplo de los dados.
+</div>
+
+<p><code>r
+dados.df</code></p>
+<p><code>Puntuacion Fr.abs Fr.rel Fr.acu Fr.racu
+1          1     10   0.40     10    0.40
+2          2      3   0.12     13    0.52
+3          3      3   0.12     16    0.64
+4          4      2   0.08     18    0.72
+5          5      5   0.20     23    0.92
+6          6      2   0.08     25    1.00</code></p>
+<div class="example">
+En este caso, la moda son dos valores: el 2 y el 3. La mediana es $x_{(13)}=$ 3 y la media aritmética es 2.8
+</div>
+
+<h2 id="medidas-de-tendencia-central-en-r">Medidas de tendencia central en R</h2>
+<p>Vamos a calcular la media aritmética, mediana y moda de los dos ejemplos anteriores con instrucciones de R.</p>
+<p><code>r
+mean(edad) #La media aritmética</code></p>
+<p><code>[1] 29.2</code></p>
+<p><code>r
+mean(dados)</code></p>
+<p><code>[1] 2.8</code></p>
+<p><code>r
+median(edad) #La mediana</code></p>
+<p><code>[1] 29</code></p>
+<h2 id="medidas-de-tendencia-central-en-r_1">Medidas de tendencia central en R</h2>
+<p><code>r
+median(dados)</code></p>
+<p><code>[1] 2</code></p>
+<p><code>r
+as.numeric(names(which(table(edad)==max(table(edad))))) #La moda</code></p>
+<p><code>[1] 40</code></p>
+<p><code>r
+as.numeric(names(which(table(dados)==max(table(dados)))))</code></p>
+<p><code>[1] 1</code></p>
+<p>Cuando trabajamos con datos cuantitativos, es conveniente que el resultado lo demos como un número. De ahí que hayamos aplicado la función <code>as.numeric</code>.</p>
+<h1 id="medidas-de-posicion">Medidas de posición</h1>
+<h2 id="medidas-de-posicion_1">Medidas de posición</h2>
+<p>Las <l class="definition">medidas de posición</l> estiman qué valores dividen las observaciones en unas determinadas proporciones.</p>
+<p>Los valores que determinan estas posiciones son conocidos como los <l class="definition">cuantiles</l>.</p>
+<p>Pensándolo de este modo, la mediana puede interpretarse como una medida de posición, debido a que divide la variable cuantitativa en dos mitades.</p>
+<h2 id="medidas-de-posicion_2">Medidas de posición</h2>
+<p>Dada una proporción $p\in(0,1)$, el <l class="definition">cuantil de orden $p$</l> de una variable cuantitativa, $Q_p$, es el valor más pequeño tal que su frecuencia relativa acumulada es mayor o igual a $p$.</p>
+<p>Dicho de otro modo, si tenemos un conjunto de observaciones $x_1,\dots,x_n$ y los ordenamos de menor a mayor, entonces $Q_p$ será el número más pequeño que deja a su izquierda (incluyéndose a sí mismo) como mínimo a la fracción $p$ de los datos. Es decir, $p\cdot n$.</p>
+<p>Así, ahora es más claro ver que la mediana vendría a ser $Q_{0.5}$, el cuantil de orden 0.5.</p>
+<h2 id="ejemplo-3">Ejemplo 3</h2>
+<div class="example">
+**Ejemplo 3**
+
+Consideremos un experimento en el que lanzamos 50 veces un dado de 4 caras y obtenemos los siguientes resultados
+</div>
+
+<p><code>r
+set.seed(260798)
+dado = sample(1:4, 50, replace = TRUE)
+set.seed(NULL)
+length(dado)</code></p>
+<p><code>[1] 50</code></p>
+<p><code>r
+dado = sort(dado) #Los ordenamos de menor a mayor
+dado</code></p>
+<p><code>[1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 4 4
+[39] 4 4 4 4 4 4 4 4 4 4 4 4</code></p>
+<h2 id="ejemplo-3_1">Ejemplo 3</h2>
+<p><code>r
+df.dado = data.frame(Puntuacion = 1:4,
+                      Fr.abs = as.vector(table(dado)),
+                      Fr.rel = as.vector(round(prop.table(table(dado)),2)),
+                      Fr.acu = as.vector(cumsum(table(dado))),
+                      Fr.racu = as.vector(round(cumsum(prop.table(table(dado))),2)))
+df.dado</code></p>
+<p><code>Puntuacion Fr.abs Fr.rel Fr.acu Fr.racu
+1          1     16   0.32     16    0.32
+2          2     15   0.30     31    0.62
+3          3      5   0.10     36    0.72
+4          4     14   0.28     50    1.00</code></p>
+<div class="example">
+Si nos piden el cuantil $Q_{0.3}$, sabemos que este es el primer elemento de la lista cuya frecuencia relativa acumulada es mayor o igual a 0.3. Este se corresponde con la puntuación 1.
+</div>
+
+<h2 id="ejemplo-3_2">Ejemplo 3</h2>
+<div class="example">
+También podríamos hallarlo de otro modo: fijándonos en la lista ordenada de puntuaciones, el cuantil $Q_{0.3}$ sería el primer elemento de dicha lista tal que fuera mayor o igual que, como mínimo, el 30% de los datos. Si calculamos el 30% de 50, obtenemos que es 15. Esto lo que nos dice es que el cuantil que buscamos es el número que se encuentrae en la quinceava posición de la lista ordenada.
+</div>
+
+<p><code>r
+dado[15]</code></p>
+<p><code>[1] 1</code></p>
+<h2 id="cuantiles">Cuantiles</h2>
+<p>Algunos cuantiles tienen nombre propio:</p>
+<ul>
+<li>Los <l class="definition">cuartiles</l> son los cuantiles $Q_{0.25},Q_{0.5}$ y $Q_{0.75}$. Respectivamente, son llamados primer, segundo y tercer cuartil. El primer cuartil, $Q_{0.25}$, será el menor valor que es mayor o igual a una cuarta parte de las observaciones y $Q_{0.75}$, el menor valor que es mayor o igual a tres cuartas partes de los datos observados.</li>
+<li>El cuantil $Q_{0.5}$ es la mediana</li>
+<li>Los <l class="definition">deciles</l> son los cuantiles $Q_p$ con $p$ un múltiplo de 0.1.</li>
+<li>Los <l class="definition">percentiles</l> son son los cuantiles $Q_p$ con $p$ un múltiplo de 0.01.</li>
+</ul>
+<h2 id="cuantiles_1">Cuantiles</h2>
+<p>La definición de cuantil anteriormente dada es orientativa. La realidad es que, exceptuando el caso de la mediana, no hay consenso sobre cómo deben calcularse los cuantiles. En verdad, existen diferentes métodos que pueden dar lugar a soluciones distintas.</p>
+<p>Al fin y al cabo, nuestro objetivo no es el de encontrar el primer valor de una muestra cuya frecuencia relativa acumulada en la variable sea mayor o igual a $p$, sino estimar el valor de esta cantidad para el total de la población.</p>
+<p>Para calcular los cuantiles de orden $p$ de una variable cualitativa $x$ con R, se utiliza la instrucción <code>quantile(x,p)</code>, la cual dispone de 9 métodos diferentes que se especifican con el parámetro <code>type</code>. El valor por defecto es <code>type = 7</code> y no hace falta especificarlo, como veremos en el siguiente ejemplo. Para más información sobre todos los valores posibles de este parámetro, haced click en el enlace a <a href="https://es.wikipedia.org/wiki/Cuantil">Wikipedia</a></p>
+<h2 id="ejemplo-4">Ejemplo 4</h2>
+<p><code>r
+set.seed(0)
+dados2 = sample(1:6,15, replace = TRUE)
+dados2</code></p>
+<p><code>[1] 6 1 4 1 2 5 3 6 2 3 3 1 5 5 2</code></p>
+<p><code>r
+set.seed(NULL)
+quantile(dados2,0.25) #Primer cuartil</code></p>
+<p><code>25% 
+  2</code></p>
+<p><code>r
+quantile(dados2,0.8)</code></p>
+<p><code>80% 
+  5</code></p>
+<h1 id="medidas-de-dispersion">Medidas de dispersión</h1>
+<h2 id="medidas-de-dispersion_1">Medidas de dispersión</h2>
+<p>Las <l class="definition">medidas de dispersión</l> evalúan lo dispersos que están los datos. Algunas de las más importantes son:</p>
+<ul>
+<li>
+<p>El <l class="definition">rango</l> o <l class="definition">recorrido</l>, que es la diferencia entre el máximo y el mínimo de las observaciones.</p>
+</li>
+<li>
+<p>El <l class="definition">rango intercuartílico</l>, que es la diferencia entre el tercer y primer cuartil, $Q_{0.75}-Q_{0.25}$.</p>
+</li>
+<li>
+<p>La <l class="definition">varianza</l>, a la que denotaremos por $s^2$, es la media aritmética de las diferencias al cuadrado entre los datos $x_i$ y la media aritmética de las observaciones, $\bar{x}$. $$s^2 = \frac{\sum_{j=1}^n(x_j-\bar{x})^2}{n}=\frac{\sum_{j=1}^kn_j(X_j-\bar{x})^2}{n}=\sum_{j=1}^kf_j(X_j-\bar{x})^2$$.</p>
+</li>
+</ul>
+<h2 id="medidas-de-dispersion_2">Medidas de dispersión</h2>
+<ul>
+<li>
+<p>La <l class="definition">desviación típica</l> es la raíz cuadrada positiva de la varianza, $s=\sqrt{s^2}$.</p>
+</li>
+<li>
+<p>La <l class="definition">varianza muestral</l> es la corrección de la varianza. La denotamos por $\tilde{s}^2$ y se corresponde con
+$$\tilde{s}^2 = \frac{n}{n-1}s^2 = \frac{\sum_{j=1}^n(x_i-\bar{x})^2}{n-1}$$</p>
+</li>
+<li>La <l class="definition">desviación típica muestral</l>, que es la raíz cuadrada positiva de la varianza muestral, $\tilde{s} = \sqrt{\tilde{s}^2}$</li>
+</ul>
+<h2 id="propiedades-de-la-varianza">Propiedades de la varianza</h2>
+<p><l class="prop"> Propiedades de la varianza.</l></p>
+<ul>
+<li>$s^2\ge 0$. Esto se debe a que, por definición, es una suma de cuadrados de números reales.</li>
+<li>$s^2 = 0\Longrightarrow x_j-\bar{x}=0\ \forall j= 1,\dots,n$. En consecuencia, si $s^2=0$, entonces todos los datos son iguales.</li>
+<li>$s^2 =\frac{\sum_{j=1}^nx_j^2}{n}-\bar{x}^2$. Es decir, la varianza es la media de los cuadrados de los datos menos el cuadrado de la media aritmética de estos.</li>
+</ul>
+<h2 id="varianza-y-varianza-muestral">Varianza y varianza muestral</h2>
+<p>La diferencia entre ambas definiciones viene por la interrelación entre la estadística descriptiva y la inferencial.</p>
+<p>Por un lado, es normal medir cómo varían los datos  cuantitativos mediante su varianza definida como la media aritmética de las distancias al cuadrado de los datos a su valor medio. No obstante, por otro lado, el conjunto de nuestras observaciones, por lo normal, será una muestra de una población mucho mayor y nos interesará estimar entre otras muchas cosas su variabilidad.</p>
+<p>La varianza de una muestra suele dar valores más pequños que la varianza de la población, mientras que la varianza muestral tiende a dar valores alrededor de la varianza de la población.</p>
+<h2 id="varianza-y-varianza-muestral_1">Varianza y varianza muestral</h2>
+<p>Esta corrección, para el caso de una muestra grande no es notable. Dividir $n$ entre $n-1$ en el caso de $n$ ser grande no significa una gran diferencia y aún menos si tenemos en cuenta que lo que tratamos es de estimar la varianza de la población, no de calcularla de forma exacta.</p>
+<p>En cambio, si la muestra es relativamente pequeña (digamos $n&lt;30$), entonces la varianza muestral de la muestra aproxima significativamente mejor la varianza de la población que la varianza.</p>
+<p>La diferencia entre desviación típica y desviación típica muestral es análoga.</p>
+<p>Con <code>R</code>, calcularemos la varianza y la desviación típica <strong>muestrales</strong>. Con lo cual, si queremos calcular las que no son muestrales, tendremos que multiplicarlas por $\frac{n-1}{n}$, donde $n$ es el tamaño de la muestra. Lo veremos a continuación.</p>
+<h2 id="varianza-y-desviacion-tipica">Varianza y desviación típica</h2>
+<p>Nótese que tanto la varianza como la desviación típica dan una información equivalente. Entonces, es comprensible preguntarse por qué se definen ambas medidas si con una basta. Pues bien, las unidades de la varianza (metros, litros, años...), ya sea muestral o no, están al cuadrado, mientras que las de la desviación típica no.</p>
+<h2 id="medidas-de-dispersion-con-r">Medidas de dispersión con R</h2>
+<table>
+<thead>
+<tr>
+<th>Medida de dispersión</th>
+<th>Instrucción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Valores mínimo y máximo</td>
+<td><code>range(x)</code></td>
+</tr>
+<tr>
+<td>Rango</td>
+<td><code>diff(range(x))</code></td>
+</tr>
+<tr>
+<td>Rango intercuartílico</td>
+<td><code>IQR(x, type = ...)</code></td>
+</tr>
+<tr>
+<td>Varianza muestral</td>
+<td><code>var(x)</code></td>
+</tr>
+<tr>
+<td>Desviación típica muestral</td>
+<td><code>sd(x)</code></td>
+</tr>
+<tr>
+<td>Varianza</td>
+<td><code>var(x)*(length(x)-1)/length(x)</code></td>
+</tr>
+<tr>
+<td>Desviación típica</td>
+<td><code>sd(x)*sqrt((length(x)-1)/length(x))</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="ejemplo-4_1">Ejemplo 4</h2>
+<p><code>r
+dados2</code></p>
+<p><code>[1] 6 1 4 1 2 5 3 6 2 3 3 1 5 5 2</code></p>
+<p><code>r
+diff(range(dados2))</code></p>
+<p><code>[1] 5</code></p>
+<p><code>r
+IQR(dados2)</code></p>
+<p><code>[1] 3</code></p>
+<p><code>r
+var(dados2)</code></p>
+<p><code>[1] 3.209524</code></p>
+<h2 id="ejemplo-4_2">Ejemplo 4</h2>
+<p><code>r
+sd(dados2)</code></p>
+<p><code>[1] 1.791514</code></p>
+<p><code>r
+n = length(dados2)
+var(dados2)*(n-1)/n</code></p>
+<p><code>[1] 2.995556</code></p>
+<p><code>r
+sd(dados2)*sqrt((n-1)/n)</code></p>
+<p><code>[1] 1.730767</code></p>
+<h2 id="funcion-summary">Función summary()</h2>
+<p>La función <code>summary</code> aplicada a un vector numérico o a una variable cuantitativa nos devuelve un resumen estadístico con los valores mínimo y máximo del vector, sus tres cuartiles y su media.</p>
+<p>Al aplicar esta función a un data frame, esta se aplica a todas sus variables de forma simultánea. De este modo, podemos observar rápidamente si hay diferencias notables entre sus variables numéricas.</p>
+<h2 id="ejemplo-5">Ejemplo 5</h2>
+<p><code>r
+cangrejos = read.table("../data/datacrab.txt", header = TRUE) #Cargamos el data frame
+cangrejos = cangrejos[-1] #Eliminamos la primera columna
+summary(cangrejos) #Aplicamos la función summary</code></p>
+<p><code>color           spine           width          satell           weight    
+ Min.   :2.000   Min.   :1.000   Min.   :21.0   Min.   : 0.000   Min.   :1200  
+ 1st Qu.:3.000   1st Qu.:2.000   1st Qu.:24.9   1st Qu.: 0.000   1st Qu.:2000  
+ Median :3.000   Median :3.000   Median :26.1   Median : 2.000   Median :2350  
+ Mean   :3.439   Mean   :2.486   Mean   :26.3   Mean   : 2.919   Mean   :2437  
+ 3rd Qu.:4.000   3rd Qu.:3.000   3rd Qu.:27.7   3rd Qu.: 5.000   3rd Qu.:2850  
+ Max.   :5.000   Max.   :3.000   Max.   :33.5   Max.   :15.000   Max.   :5200</code></p>
+<h2 id="ejemplo-5_1">Ejemplo 5</h2>
+<div class="example">
+Si nos interesase comparar numéricamente los pesos y las anchuras de los cangrejos con 3 colores con los que tienen 5 colores, utilizaríamos las siguientes instrucciones:
+</div>
+
+<p><code>r
+summary(subset(cangrejos, color == 3,c("weight","width")))</code></p>
+<p><code>weight         width     
+ Min.   :1300   Min.   :22.5  
+ 1st Qu.:2100   1st Qu.:25.1  
+ Median :2500   Median :26.5  
+ Mean   :2538   Mean   :26.7  
+ 3rd Qu.:3000   3rd Qu.:28.2  
+ Max.   :5200   Max.   :33.5</code></p>
+<h2 id="ejemplo-5_2">Ejemplo 5</h2>
+<p><code>r
+summary(subset(cangrejos, color == 5,c("weight","width")))</code></p>
+<p><code>weight         width      
+ Min.   :1300   Min.   :21.00  
+ 1st Qu.:1900   1st Qu.:23.90  
+ Median :2125   Median :25.50  
+ Mean   :2174   Mean   :25.28  
+ 3rd Qu.:2400   3rd Qu.:26.57  
+ Max.   :3225   Max.   :29.30</code></p>
+<div class="example">
+Y deducimos así que los cangrejos con 5 colores pesan ligeramente menos y tienen menos anchura que los que tienen 3 colores. 
+</div>
+
+<h2 id="la-funcion-by">La función by()</h2>
+<p>La función <code>by()</code> se utiliza para aplicar una determinada función a algunas columnas de un data frame segmentándolas según los niveles de un factor.</p>
+<p>La sintaxis de esta función es <code>by(columnas, factor, FUN = función)</code>.</p>
+<p>Con lo cual, haciendo uso de la función <code>by</code> y especificando <code>FUN = summary</code>, podremos calcular el resumen estadístico anteriormente comentado a subpoblaciones definidas por los niveles de un factor.</p>
+<h2 id="ejemplo-6">Ejemplo 6</h2>
+<div class="example">
+**Ejemplo 6**
+
+Para este ejemplo, haremos uso del famoso dataset iris.
+
+Si nos interesase calcular de forma rápida y sencilla las longitudes de sépalos y petalos en función de la especie, necesitaríamos hacer uso de la instrucción mostrada a continuación. 
+
+Por motivos de espacio, no se muestran los resultados proporcionados por R.
+</div>
+
+<p><code>r
+by(iris[,c(1,3)], iris$Species, FUN = summary)</code></p>
+<h2 id="funcion-aggregate">Función aggregate()</h2>
+<p>Tanto la función <code>by</code> como la función <code>aggregate</code> son equivalentes. No obstante, los resultados se muestran de forma diferente en función de cual utilicemos.</p>
+<p>En el caso del ejemplo anterior, convenía más hacer uso de la función <code>by</code>.</p>
+<p>Podéis comprobarlo introduciendo por consola la siguiente instrucción:</p>
+<p><code>r
+aggregate(cbind(Sepal.Length,Petal.Length)~Species, data=iris, FUN=summary)</code></p>
+<h2 id="na">NA</h2>
+<p>La mayoría de las funciones vistas a lo largo de este tema no funcionan bien con valores <code>NA</code>.</p>
+<p>Para no tenerlos en cuenta a la hora de aplicar estas funciones, hay que especificar el parámetro <code>na.rm = TRUE</code> en el argumento de la función.</p>
+<h2 id="ejemplo-7">Ejemplo 7</h2>
+<p><code>r
+dadosNA = c(dados2,NA)
+dadosNA</code></p>
+<p><code>[1]  6  1  4  1  2  5  3  6  2  3  3  1  5  5  2 NA</code></p>
+<p><code>r
+mean(dadosNA)</code></p>
+<p><code>[1] NA</code></p>
+<p><code>r
+mean(dadosNA, na.rm = TRUE)</code></p>
+<p><code>[1] 3.266667</code></p>
+<h1 id="diagramas-de-caja">Diagramas de caja</h1>
+<h2 id="diagramas-de-caja_1">Diagramas de caja</h2>
+<p>El conocido <l class="definition">diagrama de caja</l> o <l class="definition">box plot</l> es un tipo de gráfico que básicamente, remarca 5 valores estadísticos:</p>
+<ul>
+<li>La mediana, representada por la línea gruesa que divide la caja</li>
+<li>El primer y tercer cuartil, que son los lados inferior y superior, respectivamente. De este modo, la altura de la caja es el rango intercuantílico</li>
+<li>Los extremos, los valores $b_{inf},b_{sup}$, son los <l class="definition">bigotes</l> (<l class="definition">whiskers</l>) del gráfico. Si $m$ y $M$ son el mínimo y máximo de la variable cuantitativa, entonces los extremos se calculan del siguiente modo:
+$$b_{inf}=\max{m,Q_{0.25}-1.5(Q_{0.75}-Q_{0.25})}$$
+$$b_{sup}=\min{M,Q_{0.75}+1.5(Q_{0.75}-Q_{0.25})}$$</li>
+<li><l class="definition">Valores atípicos</l> o <l class="definition">outliers</l>, que son los que están más allá de los bigotes. Se marcan como puntos aislados.</li>
+</ul>
+<h2 id="mas-sobre-los-bigotes">Más sobre los bigotes</h2>
+<p>Por su definición, concluimos que los bigotes marcan el mínimo y máximo de la variable cuantitativa, a no ser que haya datos muy alejados de la caja intercuantílica. </p>
+<p>En tal caso, el bigote inferior marca el valor 1.5 veces el rango intercuantílico por debajo de $Q_{0.25}$, mientras que el superior marca el valor 1.5 veces el rango intercuantílico por encima de $Q_{0.75}$</p>
+<h2 id="la-funcion-boxplot">La función boxplot</h2>
+<p>La instrucción <code>boxplot()</code> dibuja diagramas de caja en R.</p>
+<p><code>r
+boxplot(dados2, main = "Un diagrama de caja")</code></p>
+<p><img alt="" src="unnamed-chunk-25-1-1.pdf"/><!-- --> </p>
+<h2 id="la-funcion-boxplot_1">La función boxplot</h2>
+<p>También podemos dibujar diversos diagramas de caja en un mismo gráfico. De este modo, se pueden comparar con mayor facilidad:</p>
+<p><code>r
+boxplot(dado,dados,dados2)</code></p>
+<p><img alt="" src="unnamed-chunk-26-1-1.pdf"/><!-- --> </p>
+<h2 id="la-funcion-boxplot_2">La función boxplot</h2>
+<p>Además, podemos dibujar el diagrama de caja de todas las variables de un data frame en un solo paso aplicando la instrucción <code>boxplot(data.frame)</code>.</p>
+<p>La mayoría de veces, dicho gráfico no será del todo satisfactorio. Dibujar diagramas de factores no tiene sentido alguno. Estos gráficos se pueden manipular incluyendo solo las variables de interés, cambiando los nombres...</p>
+<p>Veamos un ejemplo:</p>
+<h2 id="ejemplo-8">Ejemplo 8</h2>
+<p><code>r
+body = read.table("../data/bodyfat.txt", header = TRUE)
+boxplot(body)</code></p>
+<p><img alt="" src="unnamed-chunk-27-1-1.pdf"/><!-- --> </p>
+<h2 id="ejemplo-8_1">Ejemplo 8</h2>
+<p><code>r
+boxplot(body[,7:9], names = c("Pecho", "Abdomen", "Cadera"))</code></p>
+<p><img alt="" src="unnamed-chunk-28-1-1.pdf"/><!-- --> </p>
+<h2 id="la-funcion-boxplot_3">La función boxplot</h2>
+<p>Agrupar varios diagramas de caja en un solo gráfico tiene por objetivo poder compararlos visualmente, lo cual tiene sentido cuando las variables tienen significados parecidos o cuando comparamos una misma variable de poblaciones distintas.</p>
+<p>La mayoría de las veces, querremos comparar diagramas de cajas de una misma variable cuantitativa segmentada por los niveles de un factor.</p>
+<p>La sintaxis de la instrucción para dibujar en un único gráfico los diagramas de caja de una variable numérica de un data frame en función de los niveles de un factor del mismo data frame es <code>boxplot(var.numérica~factor, data = data frame)</code></p>
+<h2 id="ejemplo-9">Ejemplo 9</h2>
+<p><code>r
+boxplot(circumference~Tree, data = Orange, ylab = "Circunferencia del tronco (mm)", 
+        main = "Boxplot de los naranjos en función del tipo de árbol")</code></p>
+<p><img alt="" src="unnamed-chunk-29-1-1.pdf"/><!-- --> </p>
+<h2 id="parametros-de-la-funcion-boxplot">Parámetros de la función boxplot</h2>
+<p>Todos los parámetros de la función <code>plot()</code> que tengan sentido pueden ser utilizados en los argumentos de la función <code>boxplot()</code>.</p>
+<p>Aparte, la función <code>boxplot()</code> dispone de algunos parámetros específicos, de los cuales mencionaremos:</p>
+<ul>
+<li><code>notch</code> igualado a <code>TRUE</code> añade una muesca en la mediana de la caja. Si se da el caso en que las muescas de dos diagramas de cajas no se solapan, entonces con alto grado de confianza, concluimos que las medianas de las poblaciones correspondientes son diferentes.</li>
+</ul>
+<h2 id="ejemplo-10">Ejemplo 10</h2>
+<p><code>r
+boxplot(Sepal.Width~Species, data = iris, ylab = "Anchura del sétalo (cm)",
+        notch = TRUE, col = c("cyan","cyan2","cyan4"),
+        main = "Boxplot de iris")</code></p>
+<p><img alt="" src="unnamed-chunk-30-1-1.pdf"/><!-- --> </p>
+<h2 id="ejemplo-10_1">Ejemplo 10</h2>
+<div class="example">
+Si quisiéramos marcar de alguna forma en un diagrama de caja, cosa que puede ser muy útil en ocasiones, la media aritmética de la variable correspondiente, podríamos hacerlo mediante la función `points`:
+</div>
+
+<p><code>r
+boxplot(Sepal.Width~Species, data = iris, ylab = "Anchura del sétalo (cm)")
+medias = aggregate(Sepal.Width~Species, data = iris, FUN = mean)
+points(medias, col = "pink", pch = 15)</code></p>
+<p><img alt="" src="unnamed-chunk-31-1-1.pdf"/><!-- --> </p>
+<h2 id="ejemplo-10_2">Ejemplo 10</h2>
+<div class="example">
+La primera instrucción del chunk anterior genera el diagrama de cajas de las anchuras de los sépalos en función de la especie. Por su parte, la segunda instrucción lo que hace es calcular las medias aritméticas de las anchuras según la especie. Finalmente, la tercera instrucción lo que hace es añadir al diagrama un punto cuadrado a cada caja en la ordenada correspondiente a su media aritmética.
+</div>
+
+<h2 id="la-estructura-interna-de-boxplot">La estructura interna de boxplot</h2>
+<p>Como ya sabemos, podemos estudiar la función interna de algunos objetos con la función <code>str</code>.</p>
+<p>Dicha función aplicada a un boxplot, nos produce una list. Podéis ver esta list si introducís por consola la siguiente instrucción: <code>str(boxplot(circumference~Tree, data = Orange))</code> Destacaremos dos de sus componenetes aquí:</p>
+<ul>
+<li><code>stats</code> nos devuelve los valores $b_{inf},\ Q_{0.25},\ Q_{0.5},\ Q_{0.75},\ b_{sup}$</li>
+<li><code>out</code> nos retorna los valores atípicos. En caso de haber diversos diagramas en un plot, la componente <code>group</code> nos indica a qué diagramas pertenecen estos ouliers.</li>
+</ul>
+</body></html>
