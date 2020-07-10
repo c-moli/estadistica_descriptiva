@@ -1,13 +1,14 @@
 ---
 title: "Tema 9 - Datos cuantitativos agrupados"
 author: "Juan Gabriel Gomila & María Santos"
-output: 
+output:
+  beamer_presentation: default
   ioslides_presentation:
-    widescreen: true
     css: JB_style.css
-    logo: Imgs/LogoCurso.png
     fig_height: 4
     fig_width: 8
+    logo: Imgs/LogoCurso.png
+    widescreen: yes
 ---
 
 ```{r setup, include=FALSE}
