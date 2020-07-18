@@ -5,7 +5,7 @@ import pandas as pd
 notas = np.random.randint(0,11,50)
 
 #definimos los extremos de los intervalos
-L = np.array([0,5,7,9,11])
+L = np.array([0,5,7,9,10.01])
 
 #cut 1, las notas codificados según el intervalo
 notas1 = pd.cut(notas, bins = L, include_lowest=True, precision=1, right=False)
@@ -40,6 +40,14 @@ tabla_frec["Frec. Rel. Acum."] = tabla_frec["Frec. Rel"].cumsum()
 tabla_final = pd.merge(left=intervalos,right=tabla_frec, how='left', left_on='Calificación', right_on='Calificación')
 print(tabla_final)
 
+import matplotlib.pyplot as plt
+
+histograma = plt.hist(x = notas, bins=L, color = "#0505a5", alpha = 0.75, rwidth=0.85)
+plt.xlabel("Notas") #etiqueta de x
+plt.ylabel ("Frecuencia") #etiqueta de y
+plt.xticks(range(11)) #para poner todos los nº en el eje x. De manera predeterminada salta de dos en dos. Range(11) paar que ponga del 0 al 10. Se podrái haber pasado uan lista también [0,1,2,3,4,5,6,7,8,9,10]
+plt.title("Histograma de frecuencias de notas") #título
+plt.show()
 
 
 
