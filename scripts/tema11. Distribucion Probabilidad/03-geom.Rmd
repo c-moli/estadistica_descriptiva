@@ -9,6 +9,8 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+Nos da el nº de intentos hasta conseguir el priemr éxito. X podrá ser el nº de fracasos hasta el primer éxito (puede empezar en 0) o el nº de intentos hasta el primer éxito (empezaría en 1)
+
 ## Función de densidad
 
 Sea $X=Geom(p=0.1)$ la distribución que modela la probabilidad de intentar abrir una puerta hasta conseguirlo.
@@ -21,9 +23,10 @@ $$f(k) = (1-p)^{k-1}p$$
 ```{r}
 library(Rlab)
 p = 0.1
-plot(0:20, dgeom(0:20, p))
+plot(0:20, dgeom(0:20, p)) #nos da las probabilidades de acertar con 0 fallos, acertar con un fallo, con dos fallos etc. Al principio será mayor porque el final sería, por ejemplo, la probabilidad de acertar teniendo 12 fallos antes.
+
 plot(0:20, pgeom(0:20, p), ylim = c(0,1))
-qgeom(0.5, p)
+qgeom(0.5, p) #nos da los intentos que harían falta hasta obtener una probabilidad acumulada del 50% de tener éxito
 qgeom(0.75, p)
 hist(rgeom(10000, p))
 ```
@@ -34,7 +37,7 @@ from scipy.stats import geom
 import matplotlib.pyplot as plt
 import numpy as np
 
-fig, ax = plt.subplots(1,1)
+fig, ax = plt.subplots(1,1) #funcion paar generar gráfico que nos devuelve como objetos la figura (fig) y el eje x (ax). Con el (1,1) le pasamos el tamaño que queremos 
 p = 0.3
 mean, var, skew, kurt = geom.stats(p, moments = 'mvsk')
 print("Media %f"%mean)
@@ -42,7 +45,8 @@ print("Varianza %f"%var)
 print("Sesgo %f"%skew)
 print("Curtosis %f"%kurt)
 
-x = np.arange(geom.ppf(0.01,p), geom.ppf(0.99, p))
+x = np.arange(geom.ppf(0.01,p), geom.ppf(0.99, p)) #para que la x vaya desde el quantil 1% hasta el 99% y así nos aseguramos que el gráfico está dentro de esos valores. Si no, podría empezar el eje x en 0 y acabar el 10 pero los datos ir de 5 a 15 y perderíamos representación gráfica
+
 ax.plot(x, geom.pmf(x, p), 'bo', ms = 8, label = "Función de probabilidad de Geom(0.3)")
 ax.vlines(x,0,geom.pmf(x,p),  colors = 'b', lw = 4, alpha = 0.5)
 

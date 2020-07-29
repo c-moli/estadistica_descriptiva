@@ -9,14 +9,16 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+Mide el nº de eventos en un cierto intervalo de tiempo
+
 ## Distribución de Poisson
 
 Supongamos que $X$ modela el número de errores por página que tiene un valor esperado $\lambda = 5$.
 
 ## En `R`
 ```{r}
-l = 5
-plot(0:20, dpois(x = 0:20, lambda = l))
+l = 5 #lamda, el valor esperado (esperanza) 
+plot(0:20, dpois(x = 0:20, lambda = l)) #probabilidad desde 0 errores hasta 20 por página sabiendo que la esperanza es de 5
 ppois(0:20, l)
 qpois(0.5, 5)
 rpois(1000, lambda = l) -> data

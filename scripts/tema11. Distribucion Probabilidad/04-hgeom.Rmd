@@ -9,6 +9,8 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+Por ejemplo se extrae de una caja que hay un nº de objetos un nº determinado de objetos (n) a la vez o uno tars otro sin ser retornados. Los objetos son de dos tipos, A y B. Esta distribución mide la probabilidad de sacar cada tipo (es decir, cuántos objetos de cada tipo)
+
 ## Distribución Hipergeométrica
 
 Supongamos que tenemos 20 animales, de los cuales 7 son perros. Queremos medir la probabilidad de encontrar un número determinado de perros si elegimos $k=12$ animales al azar. 
@@ -17,10 +19,11 @@ Supongamos que tenemos 20 animales, de los cuales 7 son perros. Queremos medir l
 
 ```{r}
 library(Rlab)
-M = 7
-N = 13
-k = 12
-dhyper(x = 0:12, m = M, n = N, k = k)
+M = 7 #nº perros
+N = 13 #nº otros animales
+k = 12 #nº extracciones
+dhyper(x = 0:12, m = M, n = N, k = k) #en x ponemos de 0:12 y nos daría la probailidad de cada uno. Probabilidad de sacar 0 perros, de sacar 1 perro, 2 perros...hasta 12 que son las extracciones. A partir de 7 es 0 porque solo había 7 perros. Por lo que la probabilidad de sacar 8 perros es 0 (de 8 hasta 12). En este caso el nº de perros más probable de sacar sería 4 con los datos propuestos
+
 phyper(q = 0:12, m = M, n = N, k = k)
 qhyper(p = 0.5, m = M, n = N, k = k)
 rhyper(nn = 1000, m = M, n = N, k = k) -> data

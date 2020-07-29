@@ -404,6 +404,8 @@ El código de la distribución de Poisson:
 
 ## Distribución Binomial Negativa
 
+Por ejemplo, tengo un paqute de tabaco en cada bolsillo. Y voy fumando de uno y de otro. Esta distribución nos daría pro ejemplo en nº de cigarros que deberái sacar hasta que un paquete esté vacío. O cuando un paquete se vacíe cuántos cigarros quedarían en el otro. 
+
 Si $X$ es variable aleatoria que mide el "número de repeticiones hasta observar los $r$ éxitos en ensayos de Bernoulli", diremos que $X$ se distribuye como una Binomial Negativa con parámetros $r$ y $p$, $$X\sim\text{BN}(r,p)$$ donde $p$ es la probabilidad de éxito
 
 - El **dominio** de $X$ será $D_X = \{r, r+1, r+2,\dots\}$

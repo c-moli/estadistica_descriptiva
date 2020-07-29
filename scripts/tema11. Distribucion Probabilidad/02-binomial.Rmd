@@ -9,6 +9,8 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+La binomial da el nº de éxitos esperados al hacer el experimento n veces. Bernoulli sería como una binomial de n = 1
+
 ## Función de densidad
 Sea $X = B(n = 30, p = 0.6)$,
 
@@ -21,10 +23,12 @@ library(Rlab)
 n = 30
 p = 0.6
 plot(0:n, dbinom(0:n, size = n, prob = p))
+#probabilidad de 0 a 30 éxitos, haciendo el experimento 30 veces con una probalidad de 0.6
 plot(0:n, pbinom(0:n, size = n, prob = p))
 qbinom(0.5, n, p)
 qbinom(0.25, n, p)
 hist(rbinom(100000, n, p), breaks = 0:30)
+#nº de éxitos esperados al hacer 100000 veces el experimento de lanzar la moneda 30 veces (por ejemplo) con una probabilidad de éxito del 0.6 (por ejemplo cara, pero sería el valor que consideremos éxito)
 ```
 
 ## En Python
@@ -39,6 +43,7 @@ n = 7
 p = 0.4
 
 mean, var, skew, kurt = binom.stats(n, p, moments = 'mvsk')
+#son los 4 estadísticos que devuelve la función stats
 
 print("Media %f"%mean)
 print("Varianza %f"%var)
@@ -46,7 +51,7 @@ print("Sesgo %f"%skew)
 print("Curtosis %f"%kurt)
 
 
-x = np.arange(0, n+1)
+x = np.arange(0, n+1) #valores del eje x
 ax.plot(x, binom.pmf(x, n, p), 'bo', ms = 8, label = "Función de densidad de B(7,0.4)")
 ax.vlines(x, 0, binom.pmf(x,n,p), colors = 'b', lw = 4, alpha = 0.5)
 
