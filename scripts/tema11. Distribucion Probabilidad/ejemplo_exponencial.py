@@ -15,7 +15,7 @@ print("La probabilidad de recibir una llamada en 5 minutos o menos es de", round
 #creamos un array de numpy de 0 a 10 segundos (se pone 11 porque puython quita uno del final)
 x = np.arange(0,11)
 
-# le pasamos a la función la x con los diferentes segundos y el tiempo esperado. Nso devolverá un objeto numpy en formato array con 10 valores; que serán las probalidades para que ocurra el evento esperando x minutos. La primera posición esperando 0 minutos, la segunda esperando 1 minuto etc.  
+# le pasamos a la función la x con los diferentes segundos y el tiempo esperado. Nso devolverá un objeto numpy en formato array con 10 valores; que serán las probalidades para que ocurra el evento esperando x minutos. La primera posición esperando 0 minutos, la segunda esperando 1 minuto etc
 prob_especi2 = expon.pdf(x,1/lam)
 prob_acum2 = expon.cdf(x,1/lam)
 print(np.round(prob_especi2,3)) #se utiliza el método round de numpy al ser un objeto numpy
