@@ -34,14 +34,14 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 plt.clf()
-norm_data = pd.DataFrame(np.random.normal(size=100000))
+norm_data = pd.DataFrame(np.random.normal(size=100000)) #se crea un dataframe que siguen una distribución normal
 norm_data.plot(kind="density", figsize=(10,10))
 plt.vlines(norm_data.mean(), ymin = 0, ymax = 0.4, linewidth=5.0, color = "green")
 plt.vlines(norm_data.median(), ymin = 0, ymax = 0.4, 
 linewidth = 2.0, color = "red")
 plt.show()
 
-
+#ahora con la exponencial
 plt.clf()
 skewed_data = pd.DataFrame(np.random.exponential(size=100000))
 skewed_data.plot(kind="density", figsize=(10,10), xlim = (-1,5))
@@ -52,8 +52,8 @@ plt.show()
 
 
 norm_data = np.random.normal(size = 50)
-outliers = np.random.normal(15, size = 3)
-combined_data = pd.DataFrame(np.concatenate((norm_data, outliers), axis = 0))
+outliers = np.random.normal(15, size = 3)#se pone media 15, lso demás al ser normal tienen de media 0
+combined_data = pd.DataFrame(np.concatenate((norm_data, outliers), axis = 0)) #axis 0 lo junto por columnas y lo pone debajo
 
 combined_data.plot(kind="density", figsize=(10,10), xlim = (-5,20))
 plt.vlines(combined_data.mean(), ymin = 0, ymax = 0.3, linewidth=5.0, color = "green")
@@ -67,9 +67,11 @@ plt.show()
 ```{python}
 from ggplot import mtcars
 
+#el rango de la columna milla por galon (consumo)
 rang = max(mtcars["mpg"]) - min(mtcars["mpg"])
 print(rang)
 
+#se suele llamar lso 5 nº a los cuartiles
 five_nums = [mtcars["mpg"].quantile(0),
             mtcars["mpg"].quantile(0.25),
             mtcars["mpg"].quantile(0.5),
@@ -80,6 +82,7 @@ print(five_nums)
 
 print(mtcars["mpg"].describe())
 
+#rango intercuartílico
 print(mtcars["mpg"].quantile(0.75) - mtcars["mpg"].quantile(0.25))
 
 import matplotlib.pyplot as plt
@@ -105,13 +108,16 @@ from ggplot import mtcars
 print(mtcars["mpg"].var())
 print(mtcars["mpg"].std())
 
-mad = abs(mtcars["mpg"]-mtcars["mpg"].median())
-k = 1.4826
+#valor mediano absoluto (median absolut deviation). Medida dispersion basada en al mediana
+#hereda la robustez de la mediana (no cambia tanto con los outsiders)
+#no tiene formula definida, se calcual así:
+mad = abs(mtcars["mpg"]-mtcars["mpg"].median()) #valor absoluto de cada uno de los nº menos la mediana
+k = 1.4826 #valor ya definido en matemáticas y se multiplica por el
 print(mad.median()*k)
 ```
 
 - El sesgo y la curtosis
-
+Sesgo mide l smetría o asimetría. La curtosis mide lo picuda que es la curva. 
 ```{python}
 from ggplot import mtcars
 
@@ -125,16 +131,23 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+#distribución normal
 norm = np.random.normal(size=100000)
+
+#distribución creada con sesgo
 skew = np.concatenate((np.random.normal(size=35000)+2, 
                       np.random.exponential(size=65000)),
                       axis = 0)
+
+#distribucion uniforme
 unif = np.random.uniform(-2,2,size = 100000)
+
+#distribucion con pico
 peak = np.concatenate((np.random.exponential(size=50000),
                       np.random.exponential(size=50000)*(-1)),
                       axis = 0)
 
-
+#dataframe con 4 columnas y sus respectivos valores
 data = pd.DataFrame({
   "normal": norm,
   "skew": skew,

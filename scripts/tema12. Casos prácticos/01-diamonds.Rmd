@@ -7,6 +7,8 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
+#si activamos la caché va guardando cada vez que compilamos lso archivos y chunks y cuando se compila de nuevo tardará menos
+#Si se hacen cambiso significativos habría que poner caché en false para que lo compile de nuevo de cero, porque hay veces que R pasa por alto lso cambios si se habilita la caché
 ```
 
 # Análisis de los diamantes
@@ -25,6 +27,8 @@ print(diamonds.head(10))
 
 ## Histograma
 ```{python}
+#desde cualuqier objeto pandas se puede acceder a los métodos de matplotlib, ya que es la librería que usa por debajo
+#figsize en ulgadas, 8 de alto y 8 de ancho
 diamonds.hist(column="carat", figsize=(8,8), color="blue", 
               bins = 50, range = (0,3.5))
 matplotlib.pyplot.show()
@@ -54,7 +58,7 @@ matplotlib.pyplot.show()
 
 ## Densidades
 ```{python}
-matplotlib.pyplot.clf()
+matplotlib.pyplot.clf() #limpia la figura anterior para que no se superpongan los gráficos
 diamonds["carat"].plot(kind="density", figsize=(8,8), xlim=(0,5))
 matplotlib.pyplot.show()
 ```
@@ -69,10 +73,12 @@ matplotlib.pyplot.show()
 ```
 
 ```{python}
+#gráfico barras apilado
 carat_table_2 = pd.crosstab(index=diamonds["clarity"], columns=diamonds["color"])
 print(carat_table_2)
 matplotlib.pyplot.clf()
 carat_table_2.plot(kind="bar", figsize=(8,8), stacked=True)
+#parámetro stacked para apilarlo
 matplotlib.pyplot.show()
 matplotlib.pyplot.clf()
 carat_table_2.plot(kind="bar", figsize=(8,8), stacked=False)

@@ -7,8 +7,11 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
-library(reticulate)
+library(reticulate) #para combinar R y python
 use_python("/anaconda3/bin/python")
+#use_python("") y la ruta de instalación de python en anaconda para cambiar la versión de python que queremos usar
+Sys.which("python") #para saber la ruta de la versión de python que estamos usando
+
 ```
 
 # Pokemon (Py -> R)
@@ -23,13 +26,14 @@ print(pokemon.shape)
 pokemon = pokemon[pokemon["Generation"]==1]
 pokemon = pokemon[["Type 1", "Type 2", "Speed"]]
 print(pokemon.shape)
-pokemon = pokemon.dropna()
+pokemon = pokemon.dropna() #quitar los na
 print(pokemon.shape)
 ```
 
 ## Transmisión de los datos de Python a R
 ```{r, fig.width=7, fig.height=4}
 hist(py$pokemon[,"Speed"], breaks = 10, main = "Velocidad de los Pokemon")
+#py$ para acceder a los objetos de python. Se usa la nomenclatura del $ típica de R
 ```
 
 # Pokemon (R -> Py)
@@ -37,16 +41,17 @@ hist(py$pokemon[,"Speed"], breaks = 10, main = "Velocidad de los Pokemon")
 ```{r}
 pokemon2 <- read.csv("../../data/Pokemon.csv", header = TRUE)
 head(pokemon2)
-library(tidyverse)
+library(tidyverse) #para investigar librería, es muy útil para manipular datos y dataframes, no solo cargarlos
+#esto sería en tidyverse
 pokemon2 <- pokemon2 %>% 
   filter(Generation == 1) %>%
-  select(Type.1, Type.2, Speed) %>%
+  select(Type.1, Type.2, Speed) %>% #si hubiese espacios hay que poner en ''
   na.omit()
 summary(pokemon2)
 ```
 
 ## Transmisión de datos de R a Python
 ```{python}
-print(r.pokemon2.head())
+print(r.pokemon2.head()) #para utilizar en python se usa la nomenclatura del punto típica de python
 ```
 

@@ -1,0 +1,3 @@
+https://www.kaggle.com/xvivancos/analyzing-star-wars-movie-scripts/data
+
+https://www.kaggle.com/xvivancos/analyzing-the-lord-of-the-rings-data/report
